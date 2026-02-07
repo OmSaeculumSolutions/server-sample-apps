@@ -7,9 +7,6 @@ WORKDIR /
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Copy npmrc
-COPY .npmrc ./
-
 # Install dependencies
 RUN npm install
 
@@ -20,7 +17,7 @@ ENV PORT=3000
 ENV MONGO_URL='mongodb://root:CIqrnarFGsRbIZ5k@144.126.209.95:27017/?directConnection=true&serverSelectionTimeoutMS=2000&authSource=admin'
 
 # caching redis
-ENV REDIS_URL='http://144.126.209.95:6379/'
+#ENV REDIS_URL='http://144.126.209.95:6379/'
 ENV REDIS_HOST='144.126.209.95'
 ENV REDIS_PORT='6379'
 ENV REDIS_USERNAME='default'
@@ -40,7 +37,7 @@ ENV MSMQ_QUEUE="task_queue"
 COPY . .
 
 # Copy the rest of the application code to the working directory
-RUN npm run build
+# RUN npm run build
 
 # Expose the application port
 EXPOSE 3000
